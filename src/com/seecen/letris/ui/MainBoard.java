@@ -16,6 +16,10 @@ import java.awt.image.BufferedImage;
 /**
  * Created by Constantine on 2016-06-20 0020.
  */
+
+/**
+ * 主面板
+ */
 public class MainBoard extends Panel implements Runnable,MouseMotionListener,MouseListener
 {
 	//LOGO下方字体
@@ -59,7 +63,7 @@ public class MainBoard extends Panel implements Runnable,MouseMotionListener,Mou
 	private Rectangle hardBox=new Rectangle((361-200)/2,280,200,40);
 
 	//模式字符串，经典模式、放松模式
-	private static final String[] modes={"Classic","Relax"};
+	private static final Mode.ModeEnum[] modes={Mode.ModeEnum.Classic,Mode.ModeEnum.Relax};
 	//难度字符串，简单，中等，困难
 	private static final String[] level={"Easy","Middle","Hard"};
 
@@ -232,8 +236,8 @@ public class MainBoard extends Panel implements Runnable,MouseMotionListener,Mou
 		Polygon rightArrow=new Polygon(rightArrowXs,rightArrowYs,rightArrowXs.length);
 		g2d.fill(rightArrow);
 
-		int strw=g2d.getFontMetrics().stringWidth(modes[modeIdx]);
-		g2d.drawString(modes[modeIdx],(width-strw)/2,30+40-12);
+		int strw=g2d.getFontMetrics().stringWidth(modes[modeIdx].toString());
+		g2d.drawString(modes[modeIdx].toString(),(width-strw)/2,30+40-12);
 
 
 		//绘制难度切换框
@@ -408,14 +412,17 @@ public class MainBoard extends Panel implements Runnable,MouseMotionListener,Mou
 			}
 			//点击了开始游戏按钮
 			else if(startBox.contains(e.getPoint()))
+			{
+				this.frame.setMode(modes[modeIdx]);
 				frame.showGameBoard();
+			}
 			//点击了退出按钮
 			else if(exitBox.contains(e.getPoint()))
 				System.exit(0);
 			//点击了模式区域
 			else if(modeBox.contains(e.getPoint()))
 			{
-				modeIdx=modeIdx==0?1:0;
+				modeIdx=(modeIdx+1)%modes.length;
 				paintPopMenu(popg2d);
 				repaint();
 

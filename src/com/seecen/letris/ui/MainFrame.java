@@ -13,13 +13,13 @@ import java.awt.event.KeyEvent;
  */
 public class MainFrame extends JFrame
 {
-	private Mode mode=new ClassicMode();
+	private Mode mode;
 
 	private MainBoard mainBoard = new MainBoard(this);
-	private GameBoard gameBoard = new GameBoard(this,mode);
+	private GameBoard gameBoard;
 
-	public static final int width=361;
-	public static final int height=611;
+	public static final int width = 361;
+	public static final int height = 611;
 
 
 	public MainFrame()
@@ -59,6 +59,24 @@ public class MainFrame extends JFrame
 		});
 
 
+	}
+
+	public void setMode(Mode.ModeEnum modeEnum)
+	{
+
+		switch (modeEnum)
+		{
+			case Classic:
+				this.mode = new ClassicMode();
+				break;
+			case Relax:
+				this.mode = new RelaxMode();
+				break;
+			default:
+				break;
+		}
+
+		gameBoard=new GameBoard(this,this.mode);
 	}
 
 

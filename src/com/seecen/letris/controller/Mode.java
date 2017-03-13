@@ -17,6 +17,12 @@ import java.util.List;
 public abstract class Mode  implements Runnable
 {
 
+	public enum ModeEnum
+	{
+		Classic,
+		Relax
+	}
+
 	//行与列方块的数量
 	public final static int BLOCKS_ROW_NUM = 8;
 	public final static int BLOCKS_CLO_NUM = 6;
