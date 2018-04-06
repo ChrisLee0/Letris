@@ -1,5 +1,5 @@
 # Letris
-Letris is a lettles game base on Tetris
+Letris is a little game base on Tetris
 
 类似于欧罗斯方块，选中方块内的单词能够拼成一个3个字母以上的单词，就可以点击下方横杆消除选中的方块。
 
