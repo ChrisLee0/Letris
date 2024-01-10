@@ -1,6 +1,6 @@
 # Letris
 Letris is a tiny game like Tetris, when you click the letters make a correct word in the right order, and then you can eliminate those blocks.
-All UIs randered by pure code with Swing, no pictures.
+All UIs randered by pure code in Swing, no pictures.
 
 类似于欧罗斯方块，选中方块内的单词能够拼成一个3个字母以上的单词，就可以点击下方横杆消除选中的方块。
 
